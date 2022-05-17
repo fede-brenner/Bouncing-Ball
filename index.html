@@ -5,31 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        *{
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        }
-        body{
-            background-color: black;
-            overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="design.css">
 </head>
 <body>
+    <div id="control-menu">
+        
+        <label for="amount-of-balls">Amount of balls:</label>
+        <input type="numeric" id="amount-of-balls" value="5">
+        <label for="speed-of-balls">Speed of balls:</label>
+        <input type="numeric" id="speed-of-balls" value="5">
+        <label for="size-of-balls">Size of balls:</label>
+        <input type="numeric" id="size-of-balls" value="30">
+
+    </div>
+
+    <p id="cta-text">Click to add balls</p>
+
+    
     <canvas id="canvas"></canvas>
 
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
+        const ctatext = document.getElementById('cta-text');
+
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.height = window.innerHeight - document.getElementById('control-menu').clientHeight;
 
         window.addEventListener('resize', ()=>{
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.height = window.innerHeight - document.getElementById('control-menu').clientHeight;
         })
         
         const particleArray = [];
@@ -41,31 +47,39 @@
 
         canvas.addEventListener('click', (e)=>{
             mouse.x = e.x;
-            mouse.y = e.y;
+            mouse.y = e.y - document.getElementById('control-menu').clientHeight;
 
-            for(let i = 0; i < 5; i++){
+            var amountofballs = document.getElementById('amount-of-balls').value
+            for(let i = 0; i < amountofballs; i++){
                 particleArray.push(new Particle());
             }
+            ctatext.style.visibility='hidden'
         });
 
         class Particle{
             constructor(){
                 this.x = mouse.x;
                 this.y = mouse.y;
+                
                 this.color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256)+ "," + Math.floor(Math.random() * 256) + ")";
-                this.size = Math.random()* 0 + 30;
-                this.speedX = Math.random()* 10 - 10;
-                this.speedY = Math.random()* 10 - 10;
+                
+                this.size = document.getElementById('size-of-balls').value;
+
+                
+                this.direction = Math.random() * Math.PI * 2;
+
+                this.speed = document.getElementById('speed-of-balls').value
+
                 
             }
             update(){
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if(this.x + this.speedX > canvas.width - this.size || this.x + this.speedX < this.size){
-                    this.speedX =-this.speedX
+                this.x += Math.cos(this.direction) * this.speed;
+                this.y += Math.sin(this.direction) * this.speed;
+                if(this.x - this.size < 0 || this.x - canvas.width + this.size *1> 0){
+                    this.direction = Math.atan2(Math.sin(this.direction),Math.cos(this.direction)*-1);
                 }
-                if(this.y + this.speedY > canvas.height - this.size || this.y + this.speedY < this.size){
-                    this.speedY =-this.speedY
+                if(this.y - this.size < 0 || this.y - canvas.height + this.size *1> 0){
+                    this.direction = Math.atan2(Math.sin(this.direction)*-1,Math.cos(this.direction));
                 }
             }
             draw(){
