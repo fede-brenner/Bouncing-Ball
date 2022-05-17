@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        }
+        body{
+            background-color: black;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', ()=>{
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        })
+        
+        const particleArray = [];
+
+        const mouse = {
+            x: undefined,
+            y: undefined,
+        };
+
+        canvas.addEventListener('click', (e)=>{
+            mouse.x = e.x;
+            mouse.y = e.y;
+
+            for(let i = 0; i < 5; i++){
+                particleArray.push(new Particle());
+            }
+        });
+
+        class Particle{
+            constructor(){
+                this.x = mouse.x;
+                this.y = mouse.y;
+                this.color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256)+ "," + Math.floor(Math.random() * 256) + ")";
+                this.size = Math.random()* 0 + 30;
+                this.speedX = Math.random()* 10 - 10;
+                this.speedY = Math.random()* 10 - 10;
+                
+            }
+            update(){
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if(this.x + this.speedX > canvas.width - this.size || this.x + this.speedX < this.size){
+                    this.speedX =-this.speedX
+                }
+                if(this.y + this.speedY > canvas.height - this.size || this.y + this.speedY < this.size){
+                    this.speedY =-this.speedY
+                }
+            }
+            draw(){
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        function handle(){
+            for(let i = 0; i< particleArray.length; i++){
+                particleArray[i].draw();
+                particleArray[i].update();
+            }
+        }
+
+        function animate(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            handle();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+    </script>
+
+</body>
+</html>
