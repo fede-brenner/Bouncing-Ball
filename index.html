@@ -9,13 +9,20 @@
 </head>
 <body>
     <div id="control-menu">
-        
-        <label for="amount-of-balls">Amount of balls:</label>
-        <input type="numeric" id="amount-of-balls" value="5">
-        <label for="speed-of-balls">Speed of balls:</label>
-        <input type="numeric" id="speed-of-balls" value="5">
-        <label for="size-of-balls">Size of balls:</label>
-        <input type="numeric" id="size-of-balls" value="30">
+        <ul>
+            <li>
+                <label for="amount-of-balls">Amount of balls:</label>
+                <input type="numeric" id="amount-of-balls" value="5">
+            </li>
+            <li>
+                <label for="speed-of-balls">Speed of balls:</label>
+                <input type="numeric" id="speed-of-balls" value="5">
+            </li>
+            <li>
+                <label for="size-of-balls">Size of balls:</label>
+                <input type="numeric" id="size-of-balls" value="30">
+            </li>
+        </ul>
 
     </div>
 
@@ -31,11 +38,11 @@
         const ctatext = document.getElementById('cta-text');
 
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight - document.getElementById('control-menu').clientHeight;
+        canvas.height = window.innerHeight;
 
         window.addEventListener('resize', ()=>{
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight - document.getElementById('control-menu').clientHeight;
+            canvas.height = window.innerHeight;
         })
         
         const particleArray = [];
@@ -47,7 +54,7 @@
 
         canvas.addEventListener('click', (e)=>{
             mouse.x = e.x;
-            mouse.y = e.y - document.getElementById('control-menu').clientHeight;
+            mouse.y = e.y;
 
             var amountofballs = document.getElementById('amount-of-balls').value
             for(let i = 0; i < amountofballs; i++){

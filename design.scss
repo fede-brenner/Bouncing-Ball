@@ -12,20 +12,32 @@
 
     #control-menu{
         background-color: rgb(43, 43, 43);
-        padding: 20px;
-    }
-    label{
-        margin-left: 20px;
-    }
-    input{
-        border-radius: 5px;
-        border-style: none;
-        padding: 5px;
-        font-size: 15px;
-        font-family: 'SF Pro Display';
-        width: 60px;
-        text-align: center;
-        background-color: rgb(255, 255, 255);
+        padding: 15px;
+        margin: 20px;
+        border-radius: 15px;
+        position:fixed;
+        opacity: 0.9;
+        ul{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            align-items: center;
+            gap: 3em;
+            li{
+                input{
+                    border-radius: 5px;
+                    border-style: none;
+                    padding: 5px;
+                    font-size: 15px;
+                    font-family: 'SF Pro Display';
+                    width: 60px;
+                    text-align: center;
+                    background-color: rgb(255, 255, 255);
+                }
+            }
+        }
     }
     #cta-text{
         text-align: center;
