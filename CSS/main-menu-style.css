@@ -1,0 +1,48 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  overflow: hidden;
+  font-family: 'SF Pro Display';
+  color: white;
+}
+
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+  text-align: center;
+}
+
+#container #title {
+  font-family: 'JunkDog';
+  font-size: 300px;
+}
+
+#container .menu-btn {
+  background-color: #2b2b2b;
+  padding: 15px;
+  margin-top: 50px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  width: 100%;
+}
+
+#container #config-btn-background {
+  background-color: #2b2b2b;
+  padding: 15px;
+  margin-top: 50px;
+  border-radius: 15px;
+  opacity: 0.9;
+  width: 10%;
+}
+/*# sourceMappingURL=main-menu-style.css.map */

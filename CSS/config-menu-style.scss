@@ -1,0 +1,49 @@
+.config-menu-background{
+    display: none;
+    background-color: rgb(0, 0, 0);
+    opacity: 70%;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+}
+.config-menu{
+    position: absolute;
+    display: none;
+    background-color: rgb(43, 43, 43);
+    width: 30vw;
+    padding: 50px;
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 100%;
+    z-index: 2;
+    .top{
+        display: flex;
+        justify-content: space-between;
+        background: none;
+        height: auto;
+        width: 100%;
+        padding: 0;
+        h2{
+            font-size: 35px;
+        }
+        img{
+            width: 25px;
+        }
+    }
+
+    .config-menu-btn{
+        background-color: rgb(126, 125, 125);
+        border: none;
+        padding: 15px;
+        border-radius: 15px;
+        width: 100%;
+        margin-top: 50px;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+        font-size: 25px;
+    }
+}
