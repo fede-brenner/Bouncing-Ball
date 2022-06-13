@@ -12,7 +12,7 @@ body {
   color: white;
 }
 
-.top-bar {
+#top-bar {
   position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,7 +28,7 @@ body {
   z-index: 0;
 }
 
-.top-bar #control-bar {
+#top-bar #control-bar {
   background-color: #2b2b2b;
   padding: 20px;
   margin: 20px;
@@ -40,18 +40,28 @@ body {
   display: grid;
   -ms-grid-columns: (auto)[3];
       grid-template-columns: repeat(3, auto);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   gap: 3em;
   pointer-events: all;
 }
 
-.top-bar #control-bar li {
+#top-bar #control-bar li {
   font-size: 25px;
 }
 
-.top-bar #control-bar li input {
+#top-bar #control-bar li label {
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+
+#top-bar #control-bar li input {
   border-radius: 5px;
   border-style: none;
   padding: 5px;
@@ -62,13 +72,25 @@ body {
   background-color: white;
 }
 
-.top-bar #small-config-btn {
+#top-bar #control-bar .control-gravity {
+  display: none;
+}
+
+#top-bar #small-config-btn {
   background-color: #2b2b2b;
   padding: 15px;
   margin: 20px;
   border-radius: 15px;
   opacity: 0.9;
   pointer-events: all;
+}
+
+#top-bar #small-config-btn:hover {
+  background-color: #424242;
+}
+
+#top-bar #small-config-btn:active {
+  background-color: #181818;
 }
 
 #cta-text {

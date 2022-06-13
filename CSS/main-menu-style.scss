@@ -11,6 +11,8 @@ body{
 }
 #container{
     position: absolute;
+    display: flex;
+    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-60%);
@@ -30,13 +32,24 @@ body{
         font-size: 40px;
         width: 100%;
     }
+    .menu-btn:hover{
+        background-color: rgb(66, 66, 66);
+    }
+    .menu-btn:active{
+        background-color: rgb(24, 24, 24);
+    }
 
-    #config-btn-background{
+    #small-config-btn{
         background-color: rgb(43, 43, 43);
         padding: 15px;
         margin-top: 50px;
         border-radius: 15px;
-        opacity: 0.9;
-        width: 10%;
+        width: 11%;
+    }
+    #small-config-btn:hover{
+        background-color: rgb(66, 66, 66);
+    }
+    #small-config-btn:active{
+        background-color: rgb(24, 24, 24);
     }
 }

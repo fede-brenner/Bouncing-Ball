@@ -11,7 +11,7 @@ window.addEventListener('resize', ()=>{
     canvas.height = window.innerHeight;
 })
 
-const particleArray = [];
+var particleArray = [];
 
 const mouse = {
     x: undefined,
@@ -24,43 +24,61 @@ canvas.addEventListener('click', (e)=>{
 
     var amountofballs = document.getElementById('amount-of-balls').value
     for(let i = 0; i < amountofballs; i++){
-        particleArray.push(new Particle());
+        particleArray.push(new Ball());
     }
+    
     ctatext.style.visibility='hidden'
 });
 
-class Particle{
-    constructor(){
-        this.x = mouse.x;
-        this.y = mouse.y;
-        
-        this.color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256)+ "," + Math.floor(Math.random() * 256) + ")";
-        
-        this.size = document.getElementById('size-of-balls').value;
+function Ball(){
+    this.x = mouse.x;
+    this.y = mouse.y;
 
-        
-        this.direction = Math.random() * Math.PI * 2;
+    this.gravity = document.querySelector('#gravity').value;
+    this.friction = document.querySelector('#bounciness').value;
+    this.color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256)+ "," + Math.floor(Math.random() * 256) + ")";
+    this.size = document.getElementById('size-of-balls').value;
+    this.direction = Math.random() * Math.PI * 2;
+    this.speed = document.getElementById('speed-of-balls').value
+    this.dx = Math.cos(this.direction);
+    this.dy = Math.sin(this.direction);
 
-        this.speed = document.getElementById('speed-of-balls').value
-
-        
-    }
-    update(){
-        this.x += Math.cos(this.direction) * this.speed;
-        this.y += Math.sin(this.direction) * this.speed;
+    this.gravityoff = function(){
+        var precision = 1000;
+        this.dy -= Math.floor(Math.random() * (3 * precision - 1 * precision) + 1 * precision)/(1*precision);
+    };
+    this.update = function(){
+        this.x += this.dx * this.speed;
+        this.y += this.dy * this.speed;
         if(this.x - this.size < 0 || this.x - canvas.width + this.size *1> 0){
-            this.direction = Math.atan2(Math.sin(this.direction),Math.cos(this.direction)*-1);
+            this.dx = -this.dx;
         }
-        if(this.y - this.size < 0 || this.y - canvas.height + this.size *1> 0){
-            this.direction = Math.atan2(Math.sin(this.direction)*-1,Math.cos(this.direction));
-        }
-    }
-    draw(){
+        if(this.y - this.size + this.dy < 0 || this.y - canvas.height + this.size *1 + this.dy> 0){
+            if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
+                this.dy = -this.dy * this.friction;
+                
+            }else{
+                this.dy = -this.dy;
+            }
+            
+        }else{
+            if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
+                this.dy += this.gravity*1;
+            }
+        }   
+    };
+    this.draw = function(){
         ctx.beginPath();
         ctx.fillStyle = this.color;
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
+    };
+};
+
+function GravityOff(){
+    for(let i = 0; i< particleArray.length; i++){
+        particleArray[i].gravityoff();
     }
 }
 
@@ -70,11 +88,11 @@ function handle(){
         particleArray[i].update();
     }
 }
-
+var Refresh = false;
 function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     handle();
     requestAnimationFrame(animate);
 }
 
-animate();        
+animate();

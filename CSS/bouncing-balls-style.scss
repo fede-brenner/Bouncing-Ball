@@ -9,10 +9,10 @@ body{
     font-family: 'SF Pro Display';
     color: white;
 }
-.top-bar{
+#top-bar{
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     background: none;
     height: auto;
     width: 100%;
@@ -29,11 +29,17 @@ body{
         background-color: rgb(43, 43, 43);
         display: grid;
         grid-template-columns: repeat(3, auto);
-        align-items: center;
         gap: 3em;
         pointer-events: all;
         li{
             font-size: 25px;
+            label{
+                user-select: none; /* supported by Chrome and Opera */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+            }
             input{
                 border-radius: 5px;
                 border-style: none;
@@ -45,6 +51,9 @@ body{
                 background-color: rgb(255, 255, 255);
             }
         }
+        .control-gravity{
+            display: none;
+        }
     }
     #small-config-btn{
         background-color: rgb(43, 43, 43);
@@ -53,6 +62,12 @@ body{
         border-radius: 15px;
         opacity: 0.9;
         pointer-events: all;
+    }
+    #small-config-btn:hover{
+        background-color: rgb(66, 66, 66);
+    }
+    #small-config-btn:active{
+        background-color: rgb(24, 24, 24);
     }
 }
 
