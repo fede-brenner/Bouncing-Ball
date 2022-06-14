@@ -30,6 +30,12 @@
         h2{
             font-size: 35px;
             color: #ddd;
+            
+            user-select: none; /* supported by Chrome and Opera */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
         }
         #config-exit:hover{
             path{
@@ -49,6 +55,12 @@
         text-decoration: none;
         color: #ddd;
         font-size: 25px;
+
+        user-select: none; /* supported by Chrome and Opera */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
     }
 }
 .config-menu-btn:hover{
@@ -58,4 +70,24 @@
 .config-menu-btn:active{
     background-color: rgb(60, 60, 60);
     color: #bbb;
+}
+@keyframes slideInFromLeft {
+    0% {
+        top: 50%;
+        left: -50%;
+    }
+    100% {
+        top: 50%;
+        left: 50%;
+    }
+}
+@keyframes slideOutFromLeft {
+    0% {
+        top: 50%;
+        left: 50%;
+    }
+    100% {
+        top: 50%;
+        left: -50%;
+    }
 }

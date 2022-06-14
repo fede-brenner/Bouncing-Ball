@@ -10,6 +10,7 @@ body{
     color: white;
 }
 #container{
+    animation: 0.5s ease-out 0s 1 appear;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -20,6 +21,14 @@ body{
     #title{
         font-family:'JunkDog';
         font-size: 300px;
+        user-select: none; /* supported by Chrome and Opera */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        .letter{
+            transition: color 1s ease;
+        }
     }
 
     .menu-btn{
@@ -27,10 +36,16 @@ body{
         padding: 15px;
         margin-top: 50px;
         border-radius: 15px;
+        border-style: none;
         text-align: center;
         color: white;
         font-size: 40px;
         width: 100%;
+        user-select: none; /* supported by Chrome and Opera */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
     }
     .menu-btn:hover{
         background-color: rgb(66, 66, 66);
@@ -44,6 +59,7 @@ body{
         padding: 15px;
         margin-top: 50px;
         border-radius: 15px;
+        border-style: none;
         width: 11%;
     }
     #small-config-btn:hover{
@@ -51,5 +67,17 @@ body{
     }
     #small-config-btn:active{
         background-color: rgb(24, 24, 24);
+    }
+}
+canvas{
+    pointer-events: none;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100;
     }
 }

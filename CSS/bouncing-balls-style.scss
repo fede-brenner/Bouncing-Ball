@@ -7,7 +7,7 @@ body{
     background-color: rgb(0, 0, 0);
     overflow: hidden;
     font-family: 'SF Pro Display';
-    color: white;
+    color: #dddddd;
 }
 #top-bar{
     position: fixed;
@@ -19,42 +19,75 @@ body{
     padding: 0;
     pointer-events: none;
     z-index: 0;
-    #control-bar{
-        background-color: rgb(43, 43, 43);
-        padding: 20px;
-        margin: 20px;
-        border-radius: 15px;
-        opacity: 0.9;
-        list-style-type: none;
-        background-color: rgb(43, 43, 43);
+    #left-bar{
         display: grid;
-        grid-template-columns: repeat(3, auto);
-        gap: 3em;
-        pointer-events: all;
-        li{
-            font-size: 25px;
-            label{
-                user-select: none; /* supported by Chrome and Opera */
-                -webkit-user-select: none; /* Safari */
-                -khtml-user-select: none; /* Konqueror HTML */
-                -moz-user-select: none; /* Firefox */
-                -ms-user-select: none; /* Internet Explorer/Edge */
-            }
-            input{
-                border-radius: 5px;
-                border-style: none;
-                padding: 5px;
+        grid-template-columns: repeat(2, auto);
+        align-items: center;
+        #control-bar{
+            background-color: rgb(43, 43, 43);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 15px;
+            opacity: 0.9;
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 3em;
+            pointer-events: all;
+            height: 81px;
+            li{
                 font-size: 25px;
-                font-family: 'SF Pro Display';
-                width: 60px;
-                text-align: center;
-                background-color: rgb(255, 255, 255);
+                label{
+                    user-select: none; /* supported by Chrome and Opera */
+                    -webkit-user-select: none; /* Safari */
+                    -khtml-user-select: none; /* Konqueror HTML */
+                    -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                }
+                input{
+                    border-radius: 5px;
+                    border-style: none;
+                    padding: 5px;
+                    font-size: 25px;
+                    font-family: 'SF Pro Display';
+                    width: 60px;
+                    text-align: center;
+                    background-color: #dddddd;
+                }
+            }
+            .control-gravity{
+                display: none;
             }
         }
-        .control-gravity{
-            display: none;
+        #refresh-btn{
+            background-color: rgb(43, 43, 43);
+            border-radius: 15px;
+            border-style: none;
+            padding: 23px;
+            margin: 20px 20px 20px 0px;
+            font-size: 25px;
+            font-family: 'SF Pro Display';
+            color: #dddddd;
+            vertical-align: middle;
+            width: 81px;
+            height: 81px;
+            pointer-events: all;
+            #refresh-icon{
+                width: 34px;
+                height: 34px;
+            }
         }
+        #refresh-btn:hover{
+            background-color: rgb(66, 66, 66);
+        }
+        // #refresh-btn:active{
+        //     background-color: rgb(24, 24, 24);
+        //     // #refresh-icon{
+        //     //     animation: 0.1s ease-in 0s 1 rotate360;
+        //     // }
+        // }
     }
+    
     #small-config-btn{
         background-color: rgb(43, 43, 43);
         padding: 15px;
@@ -83,4 +116,13 @@ body{
     top: 50%;
     margin-top: -50px;
     pointer-events: none;
+}
+
+@keyframes rotate360 {
+    0% {
+        //transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

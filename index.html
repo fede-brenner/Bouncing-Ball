@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="CSS/main-menu-style.css">
     <link rel="stylesheet" href="CSS/config-menu-style.css">
 </head>
-<body>
+<body onload="addBalls(), animate(), randomColorLoop()">
     <div id="container">
-        <h1 id="title">Balls</h1>
+        <h1 id="title"><span class="letter">B</span><span class="letter">a</span><span class="letter">l</span><span class="letter">l</span><span class="letter">s</span></h1>
 
         <button onclick="location.href='bouncing-balls.html'" id="bouncing-balls-btn" class="menu-btn">Bouncing Balls</button>
         <button onclick="location.href='index.html'"id="pool-of-balls-btn" class="menu-btn">Pool of Balls(Coming Soon)</button>
@@ -27,6 +27,10 @@
         <button onclick="location.href='index.html'"id="main-menu-btn" class="config-menu-btn">Go to Main Menu</button>
     </div>
 
+    <canvas id="canvas"></canvas>
+
+    <script src="Javascript/bouncing-ball.js"></script>
+    <script src="Javascript/random-color-title.js"></script>
     <script src="Javascript/config-menu.js"></script>
 </body>
 </html>

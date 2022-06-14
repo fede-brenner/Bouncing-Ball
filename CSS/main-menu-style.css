@@ -13,6 +13,8 @@ body {
 }
 
 #container {
+  -webkit-animation: 0.5s ease-out 0s 1 appear;
+          animation: 0.5s ease-out 0s 1 appear;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,6 +33,21 @@ body {
 #container #title {
   font-family: 'JunkDog';
   font-size: 300px;
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+}
+
+#container #title .letter {
+  -webkit-transition: color 1s ease;
+  transition: color 1s ease;
 }
 
 #container .menu-btn {
@@ -38,10 +55,21 @@ body {
   padding: 15px;
   margin-top: 50px;
   border-radius: 15px;
+  border-style: none;
   text-align: center;
   color: white;
   font-size: 40px;
   width: 100%;
+  user-select: none;
+  /* supported by Chrome and Opera */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
 }
 
 #container .menu-btn:hover {
@@ -57,6 +85,7 @@ body {
   padding: 15px;
   margin-top: 50px;
   border-radius: 15px;
+  border-style: none;
   width: 11%;
 }
 
@@ -66,5 +95,27 @@ body {
 
 #container #small-config-btn:active {
   background-color: #181818;
+}
+
+canvas {
+  pointer-events: none;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
 }
 /*# sourceMappingURL=main-menu-style.css.map */

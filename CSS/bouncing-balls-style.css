@@ -9,7 +9,7 @@ body {
   background-color: black;
   overflow: hidden;
   font-family: 'SF Pro Display';
-  color: white;
+  color: #dddddd;
 }
 
 #top-bar {
@@ -28,27 +28,37 @@ body {
   z-index: 0;
 }
 
-#top-bar #control-bar {
+#top-bar #left-bar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#top-bar #left-bar #control-bar {
   background-color: #2b2b2b;
   padding: 20px;
   margin: 20px;
   border-radius: 15px;
   opacity: 0.9;
   list-style-type: none;
-  background-color: #2b2b2b;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (auto)[3];
       grid-template-columns: repeat(3, auto);
   gap: 3em;
   pointer-events: all;
+  height: 81px;
 }
 
-#top-bar #control-bar li {
+#top-bar #left-bar #control-bar li {
   font-size: 25px;
 }
 
-#top-bar #control-bar li label {
+#top-bar #left-bar #control-bar li label {
   user-select: none;
   /* supported by Chrome and Opera */
   -webkit-user-select: none;
@@ -61,7 +71,7 @@ body {
   /* Internet Explorer/Edge */
 }
 
-#top-bar #control-bar li input {
+#top-bar #left-bar #control-bar li input {
   border-radius: 5px;
   border-style: none;
   padding: 5px;
@@ -69,11 +79,35 @@ body {
   font-family: 'SF Pro Display';
   width: 60px;
   text-align: center;
-  background-color: white;
+  background-color: #dddddd;
 }
 
-#top-bar #control-bar .control-gravity {
+#top-bar #left-bar #control-bar .control-gravity {
   display: none;
+}
+
+#top-bar #left-bar #refresh-btn {
+  background-color: #2b2b2b;
+  border-radius: 15px;
+  border-style: none;
+  padding: 23px;
+  margin: 20px 20px 20px 0px;
+  font-size: 25px;
+  font-family: 'SF Pro Display';
+  color: #dddddd;
+  vertical-align: middle;
+  width: 81px;
+  height: 81px;
+  pointer-events: all;
+}
+
+#top-bar #left-bar #refresh-btn #refresh-icon {
+  width: 34px;
+  height: 34px;
+}
+
+#top-bar #left-bar #refresh-btn:hover {
+  background-color: #424242;
 }
 
 #top-bar #small-config-btn {
@@ -105,5 +139,23 @@ body {
   top: 50%;
   margin-top: -50px;
   pointer-events: none;
+}
+
+@-webkit-keyframes rotate360 {
+  0% {
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate360 {
+  0% {
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=bouncing-balls-style.css.map */

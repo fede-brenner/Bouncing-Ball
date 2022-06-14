@@ -1,3 +1,5 @@
+const refreshBtn = document.getElementById('refresh-btn');
+const refreshIcon = document.getElementById('refresh-icon');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -29,23 +31,45 @@ canvas.addEventListener('click', (e)=>{
     
     ctatext.style.visibility='hidden'
 });
+var i = 1;
+function addBalls(){
+    mouse.x = window.innerWidth/2;
+    mouse.y = window.innerHeight/2;
+
+    setTimeout(function() {
+        particleArray.push(new Ball());
+        i++;
+        if (i < 50) {
+            addBalls();
+        }
+    }, 50);
+}
 
 function Ball(){
     this.x = mouse.x;
     this.y = mouse.y;
-
-    this.gravity = document.querySelector('#gravity').value;
-    this.friction = document.querySelector('#bounciness').value;
+    try{
+        this.gravity = document.querySelector('#gravity').value;
+        this.friction = document.querySelector('#bounciness').value;
+        this.size = document.getElementById('size-of-balls').value;
+        this.speed = document.getElementById('speed-of-balls').value
+    }catch{
+        this.gravity = 0.5;
+        this.friction = 0.9;
+        this.size = 20;
+        this.speed = 3;
+    }
+    
     this.color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256)+ "," + Math.floor(Math.random() * 256) + ")";
-    this.size = document.getElementById('size-of-balls').value;
     this.direction = Math.random() * Math.PI * 2;
-    this.speed = document.getElementById('speed-of-balls').value
     this.dx = Math.cos(this.direction);
     this.dy = Math.sin(this.direction);
 
     this.gravityoff = function(){
         var precision = 1000;
-        this.dy -= Math.floor(Math.random() * (3 * precision - 1 * precision) + 1 * precision)/(1*precision);
+        if(this.y - canvas.height + this.size *1 + this.dy> 0){
+            this.dy -= Math.floor(Math.random() * (3 * precision - 1 * precision) + 1 * precision)/(1*precision);
+        }
     };
     this.update = function(){
         this.x += this.dx * this.speed;
@@ -54,17 +78,23 @@ function Ball(){
             this.dx = -this.dx;
         }
         if(this.y - this.size + this.dy < 0 || this.y - canvas.height + this.size *1 + this.dy> 0){
-            if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
-                this.dy = -this.dy * this.friction;
-                
-            }else{
+            try{
+                if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
+                    this.dy = -this.dy * this.friction;
+                }else{
+                    this.dy = -this.dy;
+                }
+            }
+            catch{
                 this.dy = -this.dy;
             }
-            
         }else{
-            if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
-                this.dy += this.gravity*1;
+            try{
+                if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
+                    this.dy += this.gravity*1;
+                }
             }
+            catch{}
         }   
     };
     this.draw = function(){
@@ -88,11 +118,22 @@ function handle(){
         particleArray[i].update();
     }
 }
-var Refresh = false;
+
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     handle();
     requestAnimationFrame(animate);
 }
 
+function refresh(){
+    particleArray = [];
+    ctatext.style.visibility='visible'
+}
 animate();
+
+refreshBtn.addEventListener('click', (e)=>{
+    refreshIcon.style.animation = '0.4s ease-in 0s 1 rotate360';
+    setTimeout(function() {
+        refreshIcon.style.animation = 'none';
+    }, 400);
+});
