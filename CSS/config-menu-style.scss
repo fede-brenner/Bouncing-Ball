@@ -50,6 +50,7 @@
         padding: 15px;
         border-radius: 15px;
         width: 100%;
+        height: 60px;
         margin-top: 50px;
         text-align: center;
         text-decoration: none;
@@ -91,3 +92,47 @@
         left: -50%;
     }
 }
+#audio-buttons{
+    display: flex;
+    gap: 2vw;
+    #sound-btn{
+        background-color: rgb(75, 75, 75);
+        border: none;
+        padding: 10px;
+        border-radius: 15px;
+        width: 100%;
+        height: 60px;
+        margin-top: 50px;
+        text-align: center;
+        .sound-icons{
+            width: 40px;
+            height: 35px;
+        }
+        #sound-check{
+            display: none;
+        }
+        #sound-on{
+            display: none;
+        }
+    }
+}
+#music-btn{
+        background-color: rgb(75, 75, 75);
+        border: none;
+        padding: 10px;
+        border-radius: 15px;
+        width: 100%;
+        height: 60px;
+        margin-top: 50px;
+        text-align: center;
+        .music-icons{
+            width: 40px;
+            height: 35px;
+        }
+        #music-check{
+            display: none;
+        }
+        #music-off{
+            display: none;
+        }
+    }

@@ -64,6 +64,7 @@
   padding: 15px;
   border-radius: 15px;
   width: 100%;
+  height: 60px;
   margin-top: 50px;
   text-align: center;
   text-decoration: none;
@@ -133,5 +134,60 @@
     top: 50%;
     left: -50%;
   }
+}
+
+#audio-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2vw;
+}
+
+#audio-buttons #sound-btn {
+  background-color: #4b4b4b;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  width: 100%;
+  height: 60px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#audio-buttons #sound-btn .sound-icons {
+  width: 40px;
+  height: 35px;
+}
+
+#audio-buttons #sound-btn #sound-check {
+  display: none;
+}
+
+#audio-buttons #sound-btn #sound-on {
+  display: none;
+}
+
+#music-btn {
+  background-color: #4b4b4b;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  width: 100%;
+  height: 60px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#music-btn .music-icons {
+  width: 40px;
+  height: 35px;
+}
+
+#music-btn #music-check {
+  display: none;
+}
+
+#music-btn #music-off {
+  display: none;
 }
 /*# sourceMappingURL=config-menu-style.css.map */

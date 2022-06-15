@@ -44,7 +44,7 @@ function addBalls(){
         }
     }, 50);
 }
-
+var audio = []
 function Ball(){
     this.x = mouse.x;
     this.y = mouse.y;
@@ -75,13 +75,28 @@ function Ball(){
         this.x += this.dx * this.speed;
         this.y += this.dy * this.speed;
         if(this.x - this.size < 0 || this.x - canvas.width + this.size *1> 0){
+            try{
+                if(document.getElementById('sound').checked == true){
+                audio.push(new Audio());
+            }
+            }catch{}
             this.dx = -this.dx;
         }
         if(this.y - this.size + this.dy < 0 || this.y - canvas.height + this.size *1 + this.dy> 0){
             try{
                 if(document.getElementById('gravity-btn').textContent=="Gravity: ON"){
                     this.dy = -this.dy * this.friction;
+                    try{
+                        if(this.y - canvas.height + this.size *1> 5 & document.getElementById('sound').checked == true){
+                        audio.push(new Audio());
+                    }
+                    }catch{}
                 }else{
+                    try{
+                        if(( -0.9 > this.dy || this.dy > 0.9) & document.getElementById('sound').checked == true){
+                        audio.push(new Audio());
+                    }
+                    }catch{}
                     this.dy = -this.dy;
                 }
             }
@@ -95,7 +110,7 @@ function Ball(){
                 }
             }
             catch{}
-        }   
+        }
     };
     this.draw = function(){
         ctx.beginPath();
@@ -105,6 +120,12 @@ function Ball(){
         ctx.closePath();
     };
 };
+const ballsound = document.getElementById('ball-sound');
+function Audio(){
+    ballsound.currentTime = 0;
+    ballsound.volume = 0.1;
+    ballsound.play();
+}
 
 function GravityOff(){
     for(let i = 0; i< particleArray.length; i++){

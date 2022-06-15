@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="CSS/bouncing-balls-style.css">
     <link rel="stylesheet" href="CSS/config-menu-style.css">
 </head>
-<body>
+<body onload="Music()">
     <div id="top-bar" >
         <div id="left-bar">
                 <ul id="control-bar">
@@ -51,12 +51,29 @@
         </div>
         <button onclick="controlbar()"id="control-bar-btn" class="config-menu-btn">Control bar: ON</button>
         <button onclick="Gravity(),GravityOff()"id="gravity-btn" class="config-menu-btn">Gravity: OFF</button>
+        <div id="audio-buttons">
+            <div onclick="Sound()" id="sound-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#cccccc" class="sound-icons" viewBox="0 0 24 24" id="sound-off"><path d="M19 7.358v15.642l-8-5v-.785l8-9.857zm3-6.094l-1.548-1.264-3.446 4.247-6.006 3.753v3.646l-2 2.464v-6.11h-4v10h.843l-3.843 4.736 1.548 1.264 18.452-22.736z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#cccccc" class="sound-icons" viewBox="0 0 24 24" id="sound-on"><path d="M6 7l8-5v20l-8-5v-10zm-6 10h4v-10h-4v10zm20.264-13.264l-1.497 1.497c1.847 1.783 2.983 4.157 2.983 6.767 0 2.61-1.135 4.984-2.983 6.766l1.498 1.498c2.305-2.153 3.735-5.055 3.735-8.264s-1.43-6.11-3.736-8.264zm-.489 8.264c0-2.084-.915-3.967-2.384-5.391l-1.503 1.503c1.011 1.049 1.637 2.401 1.637 3.888 0 1.488-.623 2.841-1.634 3.891l1.503 1.503c1.468-1.424 2.381-3.309 2.381-5.394z"/></svg>
+                <input type="checkbox" id="sound-check" name="sound-check" value="no">
+            </div>
+            <div onclick="MusicBtn(), Music()" id="music-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#cccccc" class="music-icons" viewBox="0 0 24 24" id="music-off"><path d="M12,7.33a1,1,0,0,0,1-1V5.78l6-1.5V7.22L14.7,8.3a1,1,0,0,0,.24,2l.24,0L20.24,9l.07,0,.19-.09.15-.1a.93.93,0,0,0,.13-.15.78.78,0,0,0,.1-.15.55.55,0,0,0,.06-.18.65.65,0,0,0,0-.19A.24.24,0,0,0,21,8V3a1,1,0,0,0-1.24-1l-8,2A1,1,0,0,0,11,5V6.33A1,1,0,0,0,12,7.33Zm9.71,13-9-9h0l-9-9A1,1,0,0,0,2.29,3.71L11,12.41v2.94A3.45,3.45,0,0,0,9.5,15,3.5,3.5,0,1,0,13,18.5V14.41l7.29,7.3a1,1,0,0,0,1.42,0A1,1,0,0,0,21.71,20.29ZM9.5,20A1.5,1.5,0,1,1,11,18.5,1.5,1.5,0,0,1,9.5,20Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#cccccc" class="music-icons" viewBox="0 0 24 24" id="music-on" ><path d="M19.12,2.21A1,1,0,0,0,18.26,2l-8,2A1,1,0,0,0,9.5,5V15.35A3.45,3.45,0,0,0,8,15a3.5,3.5,0,1,0,3.5,3.5V10.78L18.74,9l.07,0L19,8.85l.15-.1a.93.93,0,0,0,.13-.15.78.78,0,0,0,.1-.15.55.55,0,0,0,.06-.18.58.58,0,0,0,0-.19.24.24,0,0,0,0-.08V3A1,1,0,0,0,19.12,2.21ZM8,20a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,8,20ZM17.5,7.22l-6,1.5V5.78l6-1.5Z"/></svg>
+                <input type="checkbox" id="music-check" name="music-check" value="no" checked>
+            </div>
+        </div>
+        
+        
         <button onclick="location.href='index.html'"id="main-menu-btn" class="config-menu-btn">Go to Main Menu</button>
     </div>
 
     <p id="cta-text">Click to add balls</p>
     
     <canvas id="canvas"></canvas>
+
+    <audio src="Music/ball-hits-wall.mp3" id="ball-sound"></audio>
+    <audio src="Music/Elevator Music 1H.mp3" id="music"></audio>
 
     <script src="Javascript/config-menu.js"></script>
     <script src="Javascript/bouncing-ball.js"></script>

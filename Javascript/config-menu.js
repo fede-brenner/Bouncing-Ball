@@ -8,7 +8,6 @@ configBtn.addEventListener('click', (e) => {
     x.style.display = "block";
     c.style.animation = '0.2s ease-in 0s 1 slideInFromLeft';
     c.style.display = "block";
-    
 })
 configBtnExit.addEventListener('click', (e) => {
     x.style.display = "none";
@@ -58,4 +57,49 @@ function Gravity(){
             elems[i].style.display = 'block';
         }
     }
+}
+
+const sound = document.getElementById('sound-check');
+const soundOff = document.getElementById('sound-off');
+const soundOn = document.getElementById('sound-on');
+const soundBtn = document.getElementById('sound-btn');
+
+function Sound(){
+    if(sound.checked == false){
+        soundOn.style.display = 'inline';
+        soundOff.style.display = 'none';
+        sound.checked = true;
+    }else{
+        soundOn.style.display = 'none';
+        soundOff.style.display = 'inline';
+        sound.checked = false;
+    };
+}
+
+const music = document.getElementById('music-check');
+const musicOff = document.getElementById('music-off');
+const musicOn = document.getElementById('music-on');
+const musicBtn = document.getElementById('music-btn');
+
+function Music(){
+    const audio = document.getElementById('music');
+    if(music.checked == true){
+        audio.currentTime = 0;
+        audio.volume = 0.1;
+        audio.play();
+    }else{
+        audio.pause();
+    }
+}
+
+function MusicBtn(){
+    if(music.checked == false){
+        musicOn.style.display = 'inline';
+        musicOff.style.display = 'none';
+        music.checked = true;
+    }else{
+        musicOn.style.display = 'none';
+        musicOff.style.display = 'inline';
+        music.checked = false;
+    };
 }
